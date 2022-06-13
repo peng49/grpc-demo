@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "./services;services";
+
+service HelloService {
+  //简单模式
+  rpc SayHello(HelloRequest) returns (HelloResponse);
+  //服务端流模式
+  rpc SayHelloForServerStream(HelloRequest) returns (stream HelloResponse);
+  //客户端流模式
+  rpc SayHelloForClientStream(stream HelloRequest) returns (HelloResponse);
+  //双向流模式
+  rpc SayHelloForStream(stream HelloRequest) returns (stream HelloResponse);
+}
+
+message HelloRequest {
+  string req = 1;
+}
+
+message HelloResponse {
+   repeated string resp = 1;
+}
