@@ -147,7 +147,7 @@ func (x *helloServiceSayHelloForStreamClient) Recv() (*HelloResponse, error) {
 }
 
 // HelloServiceServer is the server API for HelloService service.
-// All implementations must embed UnimplementedHelloServiceServer
+// All implementations should embed UnimplementedHelloServiceServer
 // for forward compatibility
 type HelloServiceServer interface {
 	//简单模式
@@ -158,10 +158,9 @@ type HelloServiceServer interface {
 	SayHelloForClientStream(HelloService_SayHelloForClientStreamServer) error
 	//双向流模式
 	SayHelloForStream(HelloService_SayHelloForStreamServer) error
-	mustEmbedUnimplementedHelloServiceServer()
 }
 
-// UnimplementedHelloServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedHelloServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedHelloServiceServer struct {
 }
 
@@ -177,7 +176,6 @@ func (UnimplementedHelloServiceServer) SayHelloForClientStream(HelloService_SayH
 func (UnimplementedHelloServiceServer) SayHelloForStream(HelloService_SayHelloForStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method SayHelloForStream not implemented")
 }
-func (UnimplementedHelloServiceServer) mustEmbedUnimplementedHelloServiceServer() {}
 
 // UnsafeHelloServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to HelloServiceServer will

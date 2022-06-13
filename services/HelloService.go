@@ -10,9 +10,9 @@ import (
 
 type HelloService struct{}
 
-func (h *HelloService) mustEmbedUnimplementedHelloServiceServer() {
+/*func (h *HelloService) mustEmbedUnimplementedHelloServiceServer() {
 
-}
+}*/
 
 func (h *HelloService) SayHello(ctx context.Context, req *HelloRequest) (*HelloResponse, error) {
 	return &HelloResponse{Resp: []string{req.Req},Timestamp: timestamppb.Now()}, nil
