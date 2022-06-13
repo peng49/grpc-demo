@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option go_package = "./services;services";
 
+import "google/protobuf/timestamp.proto";
+
 service HelloService {
   //简单模式
   rpc SayHello(HelloRequest) returns (HelloResponse);
@@ -18,5 +20,6 @@ message HelloRequest {
 }
 
 message HelloResponse {
-   repeated string resp = 1;
+   google.protobuf.Timestamp timestamp = 1;
+   repeated string resp = 2;
 }

@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"fmt"
+	"google.golang.org/protobuf/types/known/timestamppb"
 	"io"
 	"time"
 )
@@ -14,7 +15,7 @@ func (h *HelloService) mustEmbedUnimplementedHelloServiceServer() {
 }
 
 func (h *HelloService) SayHello(ctx context.Context, req *HelloRequest) (*HelloResponse, error) {
-	return &HelloResponse{Resp: []string{req.Req}}, nil
+	return &HelloResponse{Resp: []string{req.Req},Timestamp: timestamppb.Now()}, nil
 }
 
 func (h *HelloService) SayHelloForServerStream(req *HelloRequest, stream HelloService_SayHelloForServerStreamServer) error {

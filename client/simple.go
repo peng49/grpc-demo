@@ -20,5 +20,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(resp.Resp)
+
+	fmt.Println(resp.Resp, resp.Timestamp.AsTime().Format("2006-01-02 15:04:05"))
 }
